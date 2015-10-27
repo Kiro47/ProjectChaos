@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import com.kiro.projchaos.customs.CustomSnowman;
 import com.kiro.projchaos.customs.CustomZombie;
+import com.kiro.projchaos.customs.DemoMan;
 import com.kiro.projchaos.customs.WitherCat;
 
 public class CommandManager implements CommandExecutor {
@@ -21,16 +22,11 @@ public class CommandManager implements CommandExecutor {
 		if (!(p.hasPermission("projchaos.spawnmob"))){ p.sendMessage("no perm"); return true;}
 		
 		if (args.length == 0) {
-			p.sendMessage(ChatColor.DARK_PURPLE + "Mobs: " + ChatColor.DARK_AQUA + "zombie, withercat, fireman, demoman, boss" );
+			p.sendMessage(ChatColor.DARK_PURPLE + "Mobs: " + ChatColor.DARK_AQUA +  "withercat, fireman, demoman, boss" );
 			return true;
 		}
 		
 		switch(args[0]) {
-			
-		case "zombie":
-			EntityTypes.spawnEntity(new CustomZombie((CraftWorld) p.getLocation().getWorld()), p.getLocation());
-			p.sendMessage("zombie spawned");
-			break;
 		case "withercat":
 			EntityTypes.spawnEntity(new WitherCat((CraftWorld) p.getLocation().getWorld()), p.getLocation());
 			p.sendMessage("withercat");
@@ -38,6 +34,10 @@ public class CommandManager implements CommandExecutor {
 		case "fireman":
 			EntityTypes.spawnEntity(new CustomSnowman((CraftWorld) p.getLocation().getWorld()), p.getLocation());
 			p.sendMessage("fireman spawned");
+			break;
+		case "demoman":
+			EntityTypes.spawnEntity(new DemoMan((CraftWorld) p.getLocation().getWorld() ), p.getLocation());
+			p.sendMessage("demoman spawned");
 			break;
 		default:
 			p.sendMessage("Invalid Error 27");

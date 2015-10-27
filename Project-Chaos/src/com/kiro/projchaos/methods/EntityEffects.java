@@ -56,4 +56,5 @@ public class EntityEffects
 			ParticleUtils.playEffect(type, entity.world, px, py, pz, offX, offY, offZ, data, count);
 		}
 	}
+	
 }

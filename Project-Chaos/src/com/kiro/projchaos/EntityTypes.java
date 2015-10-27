@@ -10,17 +10,16 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.kiro.projchaos.customs.CustomSnowman;
 import com.kiro.projchaos.customs.CustomZombie;
-import com.kiro.projchaos.customs.TZ;
+import com.kiro.projchaos.customs.DemoMan;
 import com.kiro.projchaos.customs.WitherCat;
 import com.kiro.projchaos.methods.NMSUtils;
 
 public enum EntityTypes {
 
 	// NAME("ENTITY name, Entity ID, customclass.class
-	CUSTOM_ZOMBIE("Zombie", 54, CustomZombie.class),
 	WITHER_CAT("Ocelot", 98, WitherCat.class),
-	TZ("Zombie", 54, TZ.class),
-	Fireman("Snowman",97 , CustomSnowman.class );
+	Fireman("Snowman",97 , CustomSnowman.class ),
+	Demoman("Snowman", 97 , DemoMan.class);
 
 	private EntityTypes(String name, int id, Class<? extends Entity> custom) {
 		addToMaps(custom, name,id);

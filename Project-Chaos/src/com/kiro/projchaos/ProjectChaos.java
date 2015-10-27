@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.kiro.projchaos.customs.meleeattacks.WitherCatHit;
+import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
 import com.kiro.projchaos.customs.projectilelistener.SnowmansFireball;
 
 public class ProjectChaos extends JavaPlugin{
@@ -13,5 +14,6 @@ public class ProjectChaos extends JavaPlugin{
 		
 		Bukkit.getPluginManager().registerEvents(new SnowmansFireball(), this);
 		Bukkit.getPluginManager().registerEvents(new WitherCatHit(), this);
+		Bukkit.getPluginManager().registerEvents(new DemoManBlastball() , this);
 	}
 }

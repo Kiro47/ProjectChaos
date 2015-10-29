@@ -50,6 +50,7 @@ public class HelperBot extends EntitySkeleton{
 		this.targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true));
 		this.targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityWolf.class, true));
 		this.targetSelector.a(3, new PathfinderGoalNearestAttackableTarget(this, EntityOcelot.class, true));
+
 	}
 
 	protected void initAttributes(){

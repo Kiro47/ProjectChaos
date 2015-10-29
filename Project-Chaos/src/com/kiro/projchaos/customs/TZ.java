@@ -24,7 +24,7 @@ public class TZ extends EntityZombie{
 
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public TZ(org.bukkit.World world) {
+	public TZ(org.bukkit.craftbukkit.v1_8_R3.CraftWorld world) {
 		super(((CraftWorld)world).getHandle());
 		
 		List goalB = (List)NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector); goalB.clear();

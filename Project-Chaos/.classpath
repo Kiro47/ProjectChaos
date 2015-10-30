@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="C:/Users/Kiro/Desktop/1.8 Trial Server/spigot.jar" sourcepath="C:/Users/Kiro/Desktop/1.8 Trial Server/SpigotAPI.zip"/>
+	<classpathentry kind="lib" path="/home/ssm5/Desktop/1.8.8_Server/spigot.jar" sourcepath="/home/ssm5/Desktop/APIs/Spig/SpigotAPI.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -16,7 +16,7 @@ public class NMSItems {
 		
 	}
 	public static ItemStack helm() {
-		ItemStack i = new ItemStack(Material.SKULL, 1, (byte) 3);
+		ItemStack i = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 		i.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3);
 		i.addUnsafeEnchantment(Enchantment.OXYGEN, 1);
 		SkullMeta skm = (SkullMeta) i.getItemMeta();

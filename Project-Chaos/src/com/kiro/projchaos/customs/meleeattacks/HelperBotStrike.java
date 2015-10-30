@@ -67,7 +67,7 @@ public class HelperBotStrike implements Listener{
 		if (!(sk.getCustomName().equals(HELPERBOT_NAME))) return;
 		else {
 			sk.getEquipment().setItemInHand(NMSItems.sword());
-	//		sk.getEquipment().setHelmet(NMSItems.helm());
+			sk.getEquipment().setHelmet(NMSItems.helm());
 			sk.getEquipment().setChestplate(NMSItems.chest());
 			sk.getEquipment().setLeggings(NMSItems.legs());
 			sk.getEquipment().setBoots(NMSItems.boots());

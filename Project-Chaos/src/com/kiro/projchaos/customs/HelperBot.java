@@ -17,7 +17,6 @@ public class HelperBot extends EntitySkeleton
 	{
 		super(world);
 		isCustom = false;
-		System.out.println("HelperBot Spawned Naturally!");
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})

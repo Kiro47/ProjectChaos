@@ -8,8 +8,8 @@ import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.entity.Player;
 
 import com.kiro.projchaos.customs.CustomSnowman;
-import com.kiro.projchaos.customs.CustomZombie;
 import com.kiro.projchaos.customs.DemoMan;
+import com.kiro.projchaos.customs.HelperBot;
 import com.kiro.projchaos.customs.WitherCat;
 
 public class CommandManager implements CommandExecutor {
@@ -39,8 +39,10 @@ public class CommandManager implements CommandExecutor {
 			EntityTypes.spawnEntity(new DemoMan((CraftWorld) p.getLocation().getWorld() ), p.getLocation());
 			p.sendMessage("demoman spawned");
 			break;
+		case "boss":
+			EntityTypes.spawnEntity(new HelperBot((CraftWorld) p.getLocation().getWorld()), p.getLocation());
 		default:
-			p.sendMessage("Invalid Error 27");
+			p.sendMessage("Invalid Error 27: Inproper Name, Exception IO-NULL");
 		
 		}
 		

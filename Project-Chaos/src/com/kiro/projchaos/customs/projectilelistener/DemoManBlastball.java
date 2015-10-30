@@ -41,7 +41,7 @@ public class DemoManBlastball implements Listener {
 		if (e.getEntity().getCustomName() == null) return;
 		if (e.getEntity().getCustomName().equals(BLASTBALL_NAME)) {
 			World world = (World) e.getEntity().getLocation().getWorld();
-			world.createExplosion(e.getEntity().getLocation(), 3F, true);
+			world.createExplosion(e.getEntity().getLocation(), 3F, false);
 			return;
 		}
 	}

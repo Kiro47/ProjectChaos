@@ -9,9 +9,9 @@ import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import com.kiro.projchaos.customs.CustomSnowman;
-import com.kiro.projchaos.customs.CustomZombie;
 import com.kiro.projchaos.customs.DemoMan;
 import com.kiro.projchaos.customs.WitherCat;
+import com.kiro.projchaos.customs.HelperBot;
 import com.kiro.projchaos.methods.NMSUtils;
 
 public enum EntityTypes {
@@ -19,7 +19,8 @@ public enum EntityTypes {
 	// NAME("ENTITY name, Entity ID, customclass.class
 	WITHER_CAT("Ocelot", 98, WitherCat.class),
 	Fireman("Snowman",97 , CustomSnowman.class ),
-	Demoman("Snowman", 97 , DemoMan.class);
+	Demoman("Snowman", 97 , DemoMan.class),
+	HelperBot("Skeleton", 51, HelperBot.class);
 
 	private EntityTypes(String name, int id, Class<? extends Entity> custom) {
 		addToMaps(custom, name,id);

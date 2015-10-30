@@ -21,8 +21,8 @@ public enum EntityTypes
 	WITHER_CAT("Ocelot", 98, WitherCat.class),
 	Fireman("Snowman", 97, CustomSnowman.class),
 	Demoman("Snowman", 97, DemoMan.class),
-	HelperBot("Skeleton", 51, HelperBot.class),
 	BasicSkeleton("Skeleton", 51, _Skeleton.class),
+	HelperBot("Skeleton", 51, HelperBot.class),
 	BasicZombie("Zombie", 54, _Zombie.class);
 
 	EntityTypes(String name, int id, Class<? extends Entity> custom)

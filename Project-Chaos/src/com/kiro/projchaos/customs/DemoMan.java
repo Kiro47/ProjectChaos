@@ -11,6 +11,12 @@ public class DemoMan extends EntitySnowman
 {
 	private final boolean isCustom;
 
+	public DemoMan(World world)
+	{
+		super(world);
+		isCustom = false;
+	}
+
 	public DemoMan(CraftWorld world)
 	{
 		super(world.getHandle());
@@ -43,21 +49,13 @@ public class DemoMan extends EntitySnowman
 			goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityPlayer.class, 6.0F));
 			goalSelector.a(4, new PathfinderGoalRandomLookaround(this));
 			targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true));
-		}
-	}
-
-	@Override
-	protected void initAttributes()
-	{
-		super.initAttributes();
-		if (isCustom)
-		{
 			getAttributeInstance(GenericAttributes.maxHealth).setValue(500.0D);
 			setCustomName(DemoManBlastball.DEMO_MAN_NAME);
 			setCustomNameVisible(true);
 			getAttributeInstance(GenericAttributes.c).setValue(0.5D);
 		}
 	}
+
 
 	@Override
 	protected Item getLoot()

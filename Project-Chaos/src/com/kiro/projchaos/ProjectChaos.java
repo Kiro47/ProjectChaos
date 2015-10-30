@@ -15,6 +15,8 @@ public class ProjectChaos extends JavaPlugin
 	{
 		getCommand("chaos").setExecutor(new CommandManager());
 
+		EntityTypes.values();
+
 		NMSHandler.registerMobs();
 
 		Bukkit.getPluginManager().registerEvents(new SnowmansFireball(), this);

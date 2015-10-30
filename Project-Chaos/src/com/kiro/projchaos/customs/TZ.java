@@ -11,6 +11,12 @@ public class TZ extends EntityZombie
 
 	private final boolean isCustom;
 
+	public TZ(World world)
+	{
+		super(world);
+		isCustom = false;
+	}
+
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public TZ(CraftWorld world)
 	{

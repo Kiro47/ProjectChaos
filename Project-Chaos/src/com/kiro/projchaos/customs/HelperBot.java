@@ -13,10 +13,11 @@ public class HelperBot extends EntitySkeleton
 
 	private final boolean isCustom;
 
-	public HelperBot(CraftWorld world)
+	public HelperBot(World world)
 	{
-		super(world.getHandle());
+		super(world);
 		isCustom = false;
+		System.out.println("HelperBot Spawned Naturally!");
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
@@ -53,16 +54,7 @@ public class HelperBot extends EntitySkeleton
 			targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityWolf.class, true));
 			targetSelector.a(3, new PathfinderGoalNearestAttackableTarget(this, EntityOcelot.class, true));
-		}
 
-	}
-
-	@Override
-	protected void initAttributes()
-	{
-		super.initAttributes();
-		if (isCustom)
-		{
 			getAttributeInstance(GenericAttributes.maxHealth).setValue(1000.0D);
 			setSkeletonType(1);
 			setCustomName(HelperBotStrike.HELPERBOT_NAME);
@@ -74,6 +66,7 @@ public class HelperBot extends EntitySkeleton
 			//		this.setEquipment(2, NMSItems.legs());
 			//		this.setEquipment(1, NMSItems.boots());
 		}
+
 	}
 
 }

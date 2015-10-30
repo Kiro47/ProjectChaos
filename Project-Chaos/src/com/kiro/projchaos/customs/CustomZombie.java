@@ -11,6 +11,11 @@ public class CustomZombie extends EntityZombie
 
 	private final boolean isCustom;
 
+	public CustomZombie(World world)
+	{
+		super(world);
+		isCustom = false;
+	}
 	public CustomZombie(CraftWorld world)
 	{
 		super(world.getHandle());
@@ -50,6 +55,7 @@ public class CustomZombie extends EntityZombie
 			targetSelector.a(1, new PathfinderGoalHurtByTarget(this, true));
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityOcelot.class, true));
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityVillager.class, false));
+			initAttributes();
 		}
 
 	}

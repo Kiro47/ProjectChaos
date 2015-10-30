@@ -12,6 +12,12 @@ public class CustomSnowman extends EntitySnowman
 
 	private final boolean isCustom;
 
+	public CustomSnowman(World world)
+	{
+		super(world);
+		isCustom = false;
+	}
+
 	public CustomSnowman(CraftWorld world)
 	{
 		super(world.getHandle());
@@ -44,6 +50,7 @@ public class CustomSnowman extends EntitySnowman
 			goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityPlayer.class, 6.0F));
 			goalSelector.a(4, new PathfinderGoalRandomLookaround(this));
 			targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true));
+			initAttributes();
 		}
 	}
 

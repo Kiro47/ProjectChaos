@@ -12,6 +12,12 @@ public class WitherCat extends EntityOcelot
 
 	private final boolean isCustom;
 
+	public WitherCat(World world)
+	{
+		super(world);
+		isCustom = false;
+	}
+
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public WitherCat(CraftWorld world)
 	{
@@ -48,15 +54,7 @@ public class WitherCat extends EntityOcelot
 			targetSelector.a(1, new PathfinderGoalHurtByTarget(this, true));
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityHuman.class, true));
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityWolf.class, false));
-		}
-	}
 
-	@Override
-	protected void initAttributes()
-	{
-		super.initAttributes();
-		if (isCustom)
-		{
 			getAttributeInstance(GenericAttributes.maxHealth).setValue(30.0D);
 			setCustomName(WitherCatHit.WitherCat_Name);
 			setCustomNameVisible(true);
@@ -64,6 +62,5 @@ public class WitherCat extends EntityOcelot
 			getAttributeInstance(GenericAttributes.c).setValue(0.5D);
 		}
 	}
-
 
 }

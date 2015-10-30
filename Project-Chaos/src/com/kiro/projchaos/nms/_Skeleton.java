@@ -1,31 +1,13 @@
 package com.kiro.projchaos.nms;
 
-import java.lang.reflect.Field;
-
-import net.minecraft.server.v1_8_R3.DamageSource;
-import net.minecraft.server.v1_8_R3.Entity;
-import net.minecraft.server.v1_8_R3.EntityLiving;
-import net.minecraft.server.v1_8_R3.EntitySkeleton;
-import net.minecraft.server.v1_8_R3.Item;
-import net.minecraft.server.v1_8_R3.PathfinderGoal;
-import net.minecraft.server.v1_8_R3.World;
-
+import com.kiro.projchaos.methods.ISkeleton;
+import com.kiro.projchaos.methods.Modifier;
+import com.kiro.projchaos.methods.mods.*;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.craftbukkit.v1_8_R3.util.UnsafeList;
 import org.bukkit.util.Vector;
 
-import com.kiro.projchaos.methods.ISkeleton;
-import com.kiro.projchaos.methods.Modifier;
-import com.kiro.projchaos.methods.mods.Equiptment;
-import com.kiro.projchaos.methods.mods.ModAttack;
-import com.kiro.projchaos.methods.mods.ModAttributes;
-import com.kiro.projchaos.methods.mods.ModBaseEntityTick;
-import com.kiro.projchaos.methods.mods.ModCollide;
-import com.kiro.projchaos.methods.mods.ModDamage;
-import com.kiro.projchaos.methods.mods.ModDeath;
-import com.kiro.projchaos.methods.mods.ModLoot;
-import com.kiro.projchaos.methods.mods.ModMobTick;
-import com.kiro.projchaos.methods.mods.ModProjectileLaunch;
-import com.kiro.projchaos.methods.mods.ModSound;
+import java.lang.reflect.Field;
 
 
 public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
@@ -51,21 +33,25 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 
 	private ModDeath deathMod;
 
+	@Override
 	public void die()
 	{
 		if (deathMod != null)
 		{
 			deathMod.onDeath();
-		} else
+		}
+		else
 		{
 			defaultDie();
 		}
 	}
 
+	@Override
 	public void defaultDie()
 	{
 		super.die();
 	}
+
 	@Override
 	public void collide(Entity entity)
 	{
@@ -79,6 +65,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 		}
 	}
 
+	@Override
 	public void defaultCollide(Entity entity)
 	{
 		super.collide(entity);
@@ -96,6 +83,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 	}
 
 	// call to default defaultEntityTick
+	@Override
 	public void defaultEntityTick()
 	{
 		super.t_();
@@ -114,6 +102,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 		}
 	}
 
+	@Override
 	public void defaultMobTick()
 	{
 		super.E();
@@ -142,6 +131,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 		return soundMod == null ? saySound() : soundMod.saySound();
 	}
 
+	@Override
 	public String saySound()
 	{
 		return super.z();
@@ -153,6 +143,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 		return soundMod == null ? hurtSound() : soundMod.hurtSound();
 	}
 
+	@Override
 	public String hurtSound()
 	{
 		return super.bo();
@@ -164,6 +155,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 		return soundMod == null ? deathSound() : soundMod.deathSound();
 	}
 
+	@Override
 	public String deathSound()
 	{
 		return super.bp();
@@ -194,6 +186,7 @@ public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder
 		return _damageEntity(damagesource, f);
 	}
 
+	@Override
 	public boolean _damageEntity(DamageSource damagesource, float f)
 	{
 		return super.damageEntity(damagesource, f);

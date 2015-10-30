@@ -1,56 +1,73 @@
 package com.kiro.projchaos.customs;
 
-import java.util.List;
-
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.server.v1_8_R3.EntitySnowman;
-import net.minecraft.server.v1_8_R3.GenericAttributes;
-import net.minecraft.server.v1_8_R3.Item;
-import net.minecraft.server.v1_8_R3.Items;
-import net.minecraft.server.v1_8_R3.PathfinderGoalArrowAttack;
-import net.minecraft.server.v1_8_R3.PathfinderGoalLookAtPlayer;
-import net.minecraft.server.v1_8_R3.PathfinderGoalNearestAttackableTarget;
-import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
-import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
-import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
-
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-
 import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
 import com.kiro.projchaos.methods.NMSUtils;
+import net.minecraft.server.v1_8_R3.*;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 
-public class DemoMan extends EntitySnowman{
+import java.util.List;
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public DemoMan(org.bukkit.craftbukkit.v1_8_R3.CraftWorld world) {
-		super(((CraftWorld)world).getHandle());
-		
-		List goalB = (List)NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector); goalB.clear();
+public class DemoMan extends EntitySnowman
+{
+	private final boolean isCustom;
 
-		List goalC = (List)NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector); goalC.clear();
-		
-		List targetB = (List)NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector); targetB.clear();
-		
-		List targetC = (List)NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector); targetC.clear();
-		
-		this.goalSelector.a(1, new PathfinderGoalArrowAttack(this, 1.25D, 20, 10.0F));
-		this.goalSelector.a(2, new PathfinderGoalRandomStroll(this, 1.0D));
-		this.goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityPlayer.class, 6.0F));
-		this.goalSelector.a(4, new PathfinderGoalRandomLookaround(this));
-		this.targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true) );
+	public DemoMan(CraftWorld world)
+	{
+		super(world.getHandle());
+		isCustom = false;
 	}
 
-	protected void initAttributes(){
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	public DemoMan(CraftWorld world, boolean isCustom)
+	{
+		super(world.getHandle());
+
+		this.isCustom = isCustom;
+
+		if (isCustom)
+		{
+			List goalB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, goalSelector);
+			goalB.clear();
+
+			List goalC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, goalSelector);
+			goalC.clear();
+
+			List targetB = (List) NMSUtils.getPrivateField("b", PathfinderGoalSelector.class, targetSelector);
+			targetB.clear();
+
+			List targetC = (List) NMSUtils.getPrivateField("c", PathfinderGoalSelector.class, targetSelector);
+			targetC.clear();
+
+			goalSelector.a(1, new PathfinderGoalArrowAttack(this, 1.25D, 20, 10.0F));
+			goalSelector.a(2, new PathfinderGoalRandomStroll(this, 1.0D));
+			goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityPlayer.class, 6.0F));
+			goalSelector.a(4, new PathfinderGoalRandomLookaround(this));
+			targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true));
+		}
+	}
+
+	@Override
+	protected void initAttributes()
+	{
 		super.initAttributes();
-		this.getAttributeInstance(GenericAttributes.maxHealth).setValue(500.0D);
-		this.setCustomName(DemoManBlastball.DEMO_MAN_NAME);
-		this.setCustomNameVisible(true);
-		this.getAttributeInstance(GenericAttributes.c).setValue(0.5D);
+		if (isCustom)
+		{
+			getAttributeInstance(GenericAttributes.maxHealth).setValue(500.0D);
+			setCustomName(DemoManBlastball.DEMO_MAN_NAME);
+			setCustomNameVisible(true);
+			getAttributeInstance(GenericAttributes.c).setValue(0.5D);
+		}
 	}
-	
-	protected Item getLoot() {
-		return Items.GUNPOWDER;
+
+	@Override
+	protected Item getLoot()
+	{
+		if (isCustom)
+		{
+			return Items.GUNPOWDER;
+		}
+		return super.getLoot();
 	}
-	
-	
+
+
 }

@@ -1,22 +1,15 @@
 package com.kiro.projchaos.nms;
 
-import java.util.List;
-
+import com.kiro.projchaos.methods.IArrow;
+import com.kiro.projchaos.methods.Modifier;
+import com.kiro.projchaos.methods.mods.*;
 import net.minecraft.server.v1_8_R3.*;
-
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory;
 import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.util.Vector;
 
-import com.kiro.projchaos.methods.IArrow;
-import com.kiro.projchaos.methods.Modifier;
-import com.kiro.projchaos.methods.mods.ModArrowStuckInGround;
-import com.kiro.projchaos.methods.mods.ModBaseEntityTick;
-import com.kiro.projchaos.methods.mods.ModDeath;
-import com.kiro.projchaos.methods.mods.ModMotion;
-import com.kiro.projchaos.methods.mods.ModOnPickup;
-import com.kiro.projchaos.methods.mods.ModProjectileHit;
+import java.util.List;
 
 
 public class _Arrow extends EntityArrow implements IArrow
@@ -26,7 +19,7 @@ public class _Arrow extends EntityArrow implements IArrow
 	private int tileZ = -1;
 	private Block block;
 	private int blockID;
-	public boolean inGround = false;
+	public boolean inGround;
 	public int fromPlayer;
 	public int shake;
 	public Entity shooter;
@@ -63,6 +56,7 @@ public class _Arrow extends EntityArrow implements IArrow
 
 	private ModDeath deathMod;
 
+	@Override
 	public void die()
 	{
 		if (deathMod != null)
@@ -75,6 +69,7 @@ public class _Arrow extends EntityArrow implements IArrow
 		}
 	}
 
+	@Override
 	public void defaultDie()
 	{
 		super.die();
@@ -208,7 +203,7 @@ public class _Arrow extends EntityArrow implements IArrow
 				{
 					for (j = 0; j < 4; ++j)
 					{
-						world.addParticle(EnumParticle.CRIT, locX + motX * j / 4.0D, locY + motY * j / 4.0D, locZ + motZ * j / 4.0D, -motX, -motY + 0.2D, -motZ, new int[0]);
+						world.addParticle(EnumParticle.CRIT, locX + motX * j / 4.0D, locY + motY * j / 4.0D, locZ + motZ * j / 4.0D, -motX, -motY + 0.2D, -motZ);
 					}
 				}
 
@@ -343,7 +338,6 @@ public class _Arrow extends EntityArrow implements IArrow
 
 		for (pitch = (float) (MathHelper.b(motY, motXZ) * 180.0D / 3.1415927410125732D); pitch - lastPitch < -180.0F; lastPitch -= 360.0F)
 		{
-			;
 		}
 
 		while (pitch - lastPitch >= 180.0F)
@@ -381,7 +375,7 @@ public class _Arrow extends EntityArrow implements IArrow
 			for (int var31 = 0; var31 < 4; ++var31)
 			{
 				dY = 0.25F;
-				world.addParticle(EnumParticle.WATER_BUBBLE, locX - motX * dY, locY - motY * dY, locZ - motZ * dY, motX, motY, motZ, new int[0]);
+				world.addParticle(EnumParticle.WATER_BUBBLE, locX - motX * dY, locY - motY * dY, locZ - motZ * dY, motX, motY, motZ);
 			}
 
 			motMult = 0.6F;
@@ -436,7 +430,7 @@ public class _Arrow extends EntityArrow implements IArrow
 		nbttagcompound.setShort("yTile", (short) tileY);
 		nbttagcompound.setShort("zTile", (short) tileZ);
 		nbttagcompound.setShort("life", (short) ticksInGround);
-		MinecraftKey minecraftkey = (MinecraftKey) Block.REGISTRY.c(block);
+		MinecraftKey minecraftkey = Block.REGISTRY.c(block);
 		nbttagcompound.setString("inTile", minecraftkey == null ? "" : minecraftkey.toString());
 		nbttagcompound.setByte("inData", (byte) blockID);
 		nbttagcompound.setByte("shake", (byte) shake);

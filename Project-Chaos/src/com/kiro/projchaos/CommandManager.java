@@ -4,6 +4,8 @@ import com.kiro.projchaos.customs.CustomSnowman;
 import com.kiro.projchaos.customs.DemoMan;
 import com.kiro.projchaos.customs.HelperBot;
 import com.kiro.projchaos.customs.WitherCat;
+import com.kiro.projchaos.customs.WolfPuck;
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -30,7 +32,7 @@ public class CommandManager implements CommandExecutor
 
 		if (args.length == 0)
 		{
-			p.sendMessage(ChatColor.DARK_PURPLE + "Mobs: " + ChatColor.DARK_AQUA + "withercat, fireman, demoman, boss");
+			p.sendMessage(ChatColor.DARK_PURPLE + "Mobs: " + ChatColor.DARK_AQUA + "withercat, fireman, demoman, boss, wolfpuck");
 			return true;
 		}
 
@@ -50,6 +52,12 @@ public class CommandManager implements CommandExecutor
 				break;
 			case "boss":
 				EntityTypes.spawnEntity(new HelperBot((CraftWorld) p.getLocation().getWorld(), true), p.getLocation());
+				p.sendMessage("boss spawned");
+				break;
+			case "wolfpuck":
+				EntityTypes.spawnEntity(new WolfPuck((CraftWorld)p.getLocation().getWorld(), true), p.getLocation());
+				p.sendMessage("wolfpuck spawned");
+				break;
 			default:
 				p.sendMessage("Invalid Error 27: Inproper Name, Exception IO-NULL");
 

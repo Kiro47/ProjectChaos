@@ -1,19 +1,17 @@
 package com.kiro.projchaos.customs.projectilelistener;
 
+import java.util.logging.Logger;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Snowman;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
-
-import java.util.List;
-import java.util.logging.Logger;
 
 public class DemoManBlastball implements Listener
 {
@@ -59,19 +57,9 @@ public class DemoManBlastball implements Listener
 		if (e.getEntity().getCustomName().equals(BLASTBALL_NAME))
 		{
 			World world = e.getEntity().getLocation().getWorld();
-			world.createExplosion(e.getEntity().getLocation(), 3F, false);
+			Location loc = e.getEntity().getLocation();
+			world.createExplosion(loc.getX(), loc.getY(), loc.getZ(), 3F, false, false);
 		}
 	}
-
-	@EventHandler
-	public void onExplosionHold(EntityExplodeEvent e)
-	{
-		List<Block> blocks = e.blockList();
-		if (!(e.getEntity() instanceof Snowball))
-		{
-			return;
-		}
-
-		e.blockList().removeAll(blocks);
-	}
+	
 }

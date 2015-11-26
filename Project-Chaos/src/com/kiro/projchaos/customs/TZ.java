@@ -1,7 +1,9 @@
 package com.kiro.projchaos.customs;
 
 import com.kiro.projchaos.methods.NMSUtils;
+
 import net.minecraft.server.v1_8_R3.*;
+
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 public class TZ extends EntityZombie
 {
 
+	@SuppressWarnings("unused")
 	private final boolean isCustom;
 
 	public TZ(World world)
@@ -17,7 +20,7 @@ public class TZ extends EntityZombie
 		isCustom = false;
 	}
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SuppressWarnings({})
 	public TZ(CraftWorld world)
 	{
 		super(world.getHandle());

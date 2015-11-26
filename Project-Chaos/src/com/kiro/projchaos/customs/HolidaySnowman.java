@@ -1,30 +1,43 @@
 package com.kiro.projchaos.customs;
 
-import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
-import com.kiro.projchaos.methods.NMSUtils;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-
 import java.util.List;
 
-public class DemoMan extends EntitySnowman
-{
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+
+import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
+import com.kiro.projchaos.methods.NMSUtils;
+
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.EntitySnowman;
+import net.minecraft.server.v1_8_R3.GenericAttributes;
+import net.minecraft.server.v1_8_R3.PathfinderGoalArrowAttack;
+import net.minecraft.server.v1_8_R3.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_8_R3.PathfinderGoalNearestAttackableTarget;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
+import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
+import net.minecraft.server.v1_8_R3.World;
+
+
+public class HolidaySnowman extends EntitySnowman{
+	
+	@SuppressWarnings("unused")
 	private final boolean isCustom;
 
-	public DemoMan(World world)
+	public HolidaySnowman(World world)
 	{
 		super(world);
 		isCustom = false;
 	}
 
-	public DemoMan(CraftWorld world)
+	public HolidaySnowman(CraftWorld world)
 	{
 		super(world.getHandle());
 		isCustom = false;
 	}
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public DemoMan(CraftWorld world, boolean isCustom)
+	public HolidaySnowman(CraftWorld world, boolean isCustom)
 	{
 		super(world.getHandle());
 
@@ -49,24 +62,12 @@ public class DemoMan extends EntitySnowman
 			goalSelector.a(3, new PathfinderGoalLookAtPlayer(this, EntityPlayer.class, 6.0F));
 			goalSelector.a(4, new PathfinderGoalRandomLookaround(this));
 			targetSelector.a(1, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true));
-			getAttributeInstance(GenericAttributes.maxHealth).setValue(500.0D);
+			getAttributeInstance(GenericAttributes.maxHealth).setValue(40.0D);
 			setHealth(this.getMaxHealth());
 			setCustomName(DemoManBlastball.DEMO_MAN_NAME);
 			setCustomNameVisible(true);
 			getAttributeInstance(GenericAttributes.c).setValue(0.5D);
 		}
 	}
-
-
-	@Override
-	protected Item getLoot()
-	{
-		if (isCustom)
-		{
-			return Items.GUNPOWDER;
-		}
-		return super.getLoot();
-	}
-
-
+	
 }

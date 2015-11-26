@@ -2,7 +2,9 @@ package com.kiro.projchaos.customs;
 
 import com.kiro.projchaos.customs.meleeattacks.WitherCatHit;
 import com.kiro.projchaos.methods.NMSUtils;
+
 import net.minecraft.server.v1_8_R3.*;
+
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.List;
 public class WitherCat extends EntityOcelot
 {
 
+	@SuppressWarnings("unused")
 	private final boolean isCustom;
 
 	public WitherCat(World world)
@@ -18,13 +21,14 @@ public class WitherCat extends EntityOcelot
 		isCustom = false;
 	}
 
-	@SuppressWarnings({"rawtypes", "unchecked"})
+	@SuppressWarnings({})
 	public WitherCat(CraftWorld world)
 	{
 		super(world.getHandle());
 		isCustom = false;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public WitherCat(CraftWorld world, boolean isCustom)
 	{
 		super(world.getHandle());

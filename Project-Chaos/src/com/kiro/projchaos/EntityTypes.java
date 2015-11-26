@@ -1,9 +1,6 @@
 package com.kiro.projchaos;
 
-import com.kiro.projchaos.customs.CustomSnowman;
-import com.kiro.projchaos.customs.DemoMan;
-import com.kiro.projchaos.customs.HelperBot;
-import com.kiro.projchaos.customs.WitherCat;
+import com.kiro.projchaos.customs.*;
 import com.kiro.projchaos.methods.NMSUtils;
 import com.kiro.projchaos.nms._Skeleton;
 import com.kiro.projchaos.nms._Zombie;
@@ -23,7 +20,9 @@ public enum EntityTypes
 	Demoman("Snowman", 97, DemoMan.class),
 	BasicSkeleton("Skeleton", 51, _Skeleton.class),
 	HelperBot("Skeleton", 51, HelperBot.class),
-	BasicZombie("Zombie", 54, _Zombie.class);
+	BasicZombie("Zombie", 54, _Zombie.class),
+	WolfPuck("Wolf", 95 , WolfPuck.class),
+	HolidaySnowman("Snowman", 97, HolidaySnowman.class);
 
 	EntityTypes(String name, int id, Class<? extends Entity> custom)
 	{

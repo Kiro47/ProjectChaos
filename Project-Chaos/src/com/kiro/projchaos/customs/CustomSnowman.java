@@ -24,6 +24,7 @@ public class CustomSnowman extends EntitySnowman
 		isCustom = false;
 	}
 
+
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	public CustomSnowman(CraftWorld world, boolean isCustom)
 	{
@@ -61,6 +62,7 @@ public class CustomSnowman extends EntitySnowman
 		if (isCustom)
 		{
 			getAttributeInstance(GenericAttributes.maxHealth).setValue(100.0D);
+			setHealth(this.getMaxHealth());
 			setCustomName(SnowmansFireball.SNOWMAN_NAME);
 			setCustomNameVisible(true);
 			getAttributeInstance(GenericAttributes.c).setValue(0.3D);

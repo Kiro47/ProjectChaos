@@ -60,6 +60,7 @@ public class WitherCat extends EntityOcelot
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityWolf.class, false));
 
 			getAttributeInstance(GenericAttributes.maxHealth).setValue(30.0D);
+			setHealth(this.getMaxHealth());
 			setCustomName(WitherCatHit.WitherCat_Name);
 			setCustomNameVisible(true);
 			setCatType(1);

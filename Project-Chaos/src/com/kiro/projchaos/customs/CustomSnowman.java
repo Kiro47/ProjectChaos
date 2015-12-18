@@ -1,11 +1,24 @@
 package com.kiro.projchaos.customs;
 
-import com.kiro.projchaos.customs.projectilelistener.SnowmansFireball;
-import com.kiro.projchaos.methods.NMSUtils;
-import net.minecraft.server.v1_8_R3.*;
+import java.util.List;
+
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.EntitySnowman;
+import net.minecraft.server.v1_8_R3.GenericAttributes;
+import net.minecraft.server.v1_8_R3.Item;
+import net.minecraft.server.v1_8_R3.Items;
+import net.minecraft.server.v1_8_R3.PathfinderGoalArrowAttack;
+import net.minecraft.server.v1_8_R3.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_8_R3.PathfinderGoalNearestAttackableTarget;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
+import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
+import net.minecraft.server.v1_8_R3.World;
+
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 
-import java.util.List;
+import com.kiro.projchaos.customs.projectilelistener.SnowmansFireball;
+import com.kiro.projchaos.methods.NMSUtils;
 
 public class CustomSnowman extends EntitySnowman
 {

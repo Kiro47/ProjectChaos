@@ -21,7 +21,7 @@ import com.kiro.projchaos.methods.mods.ModMobTick;
 import com.kiro.projchaos.methods.mods.SniperLauncher;
 import com.kiro.projchaos.nms.IArmorHolder;
 import com.kiro.projchaos.nms.ILivingEntity;
-import com.kiro.projchaos.nms.ParticleUtils;;
+import com.kiro.projchaos.nms.ParticleUtils;
 
 public class SummonedMinionAI implements ModMobTick, ModDeath, ModDamage
 {

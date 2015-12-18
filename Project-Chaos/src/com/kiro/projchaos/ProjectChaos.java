@@ -1,14 +1,15 @@
 package com.kiro.projchaos;
 
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import com.kiro.projchaos.customs.listener.HydraSnowmanTactics;
 import com.kiro.projchaos.customs.meleeattacks.HelperBotStrike;
 import com.kiro.projchaos.customs.meleeattacks.WitherCatHit;
 import com.kiro.projchaos.customs.meleeattacks.WolfPuckMelee;
 import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
 import com.kiro.projchaos.customs.projectilelistener.SnowmansFireball;
 import com.kiro.projchaos.nms.NMSHandler;
-
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
 
 public class ProjectChaos extends JavaPlugin
 {
@@ -25,5 +26,6 @@ public class ProjectChaos extends JavaPlugin
 		Bukkit.getPluginManager().registerEvents(new DemoManBlastball(), this);
 		Bukkit.getPluginManager().registerEvents(new HelperBotStrike(), this);
 		Bukkit.getPluginManager().registerEvents(new WolfPuckMelee(), this);
+		Bukkit.getPluginManager().registerEvents(new HydraSnowmanTactics(), this);
 	}
 }

@@ -1,13 +1,31 @@
 package com.kiro.projchaos.nms;
 
-import com.kiro.projchaos.methods.ISkeleton;
-import com.kiro.projchaos.methods.Modifier;
-import com.kiro.projchaos.methods.mods.*;
-import net.minecraft.server.v1_8_R3.*;
+import java.lang.reflect.Field;
+
+import net.minecraft.server.v1_8_R3.DamageSource;
+import net.minecraft.server.v1_8_R3.Entity;
+import net.minecraft.server.v1_8_R3.EntityLiving;
+import net.minecraft.server.v1_8_R3.EntitySkeleton;
+import net.minecraft.server.v1_8_R3.Item;
+import net.minecraft.server.v1_8_R3.PathfinderGoal;
+import net.minecraft.server.v1_8_R3.World;
+
 import org.bukkit.craftbukkit.v1_8_R3.util.UnsafeList;
 import org.bukkit.util.Vector;
 
-import java.lang.reflect.Field;
+import com.kiro.projchaos.methods.ISkeleton;
+import com.kiro.projchaos.methods.Modifier;
+import com.kiro.projchaos.methods.mods.Equiptment;
+import com.kiro.projchaos.methods.mods.ModAttack;
+import com.kiro.projchaos.methods.mods.ModAttributes;
+import com.kiro.projchaos.methods.mods.ModBaseEntityTick;
+import com.kiro.projchaos.methods.mods.ModCollide;
+import com.kiro.projchaos.methods.mods.ModDamage;
+import com.kiro.projchaos.methods.mods.ModDeath;
+import com.kiro.projchaos.methods.mods.ModLoot;
+import com.kiro.projchaos.methods.mods.ModMobTick;
+import com.kiro.projchaos.methods.mods.ModProjectileLaunch;
+import com.kiro.projchaos.methods.mods.ModSound;
 
 
 public class _Skeleton extends EntitySkeleton implements ISkeleton, IArmorHolder

@@ -2,9 +2,9 @@ package com.kiro.projchaos.methods;
 
 import java.util.Random;
 
-import com.kiro.projchaos.nms.ParticleUtils;
-
 import net.minecraft.server.v1_8_R3.Entity;
+
+import com.kiro.projchaos.nms.ParticleUtils;
 
 public class EntityEffects
 {

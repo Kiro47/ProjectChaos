@@ -1,15 +1,42 @@
 package com.kiro.projchaos.nms;
 
-import com.kiro.projchaos.methods.IArrow;
-import com.kiro.projchaos.methods.Modifier;
-import com.kiro.projchaos.methods.mods.*;
-import net.minecraft.server.v1_8_R3.*;
+import java.util.List;
+
+import net.minecraft.server.v1_8_R3.AxisAlignedBB;
+import net.minecraft.server.v1_8_R3.Block;
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.DamageSource;
+import net.minecraft.server.v1_8_R3.EnchantmentManager;
+import net.minecraft.server.v1_8_R3.Entity;
+import net.minecraft.server.v1_8_R3.EntityArrow;
+import net.minecraft.server.v1_8_R3.EntityEnderman;
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityLiving;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import net.minecraft.server.v1_8_R3.IBlockData;
+import net.minecraft.server.v1_8_R3.Material;
+import net.minecraft.server.v1_8_R3.MathHelper;
+import net.minecraft.server.v1_8_R3.MinecraftKey;
+import net.minecraft.server.v1_8_R3.MovingObjectPosition;
+import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import net.minecraft.server.v1_8_R3.PacketPlayOutGameStateChange;
+import net.minecraft.server.v1_8_R3.Vec3D;
+import net.minecraft.server.v1_8_R3.World;
+
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory;
 import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.util.Vector;
 
-import java.util.List;
+import com.kiro.projchaos.methods.IArrow;
+import com.kiro.projchaos.methods.Modifier;
+import com.kiro.projchaos.methods.mods.ModArrowStuckInGround;
+import com.kiro.projchaos.methods.mods.ModBaseEntityTick;
+import com.kiro.projchaos.methods.mods.ModDeath;
+import com.kiro.projchaos.methods.mods.ModMotion;
+import com.kiro.projchaos.methods.mods.ModOnPickup;
+import com.kiro.projchaos.methods.mods.ModProjectileHit;
 
 
 public class _Arrow extends EntityArrow implements IArrow

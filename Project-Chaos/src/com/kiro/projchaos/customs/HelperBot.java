@@ -1,12 +1,27 @@
 package com.kiro.projchaos.customs;
 
+import java.util.List;
+
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityOcelot;
+import net.minecraft.server.v1_8_R3.EntitySkeleton;
+import net.minecraft.server.v1_8_R3.EntityWolf;
+import net.minecraft.server.v1_8_R3.GenericAttributes;
+import net.minecraft.server.v1_8_R3.PathfinderGoalFloat;
+import net.minecraft.server.v1_8_R3.PathfinderGoalHurtByTarget;
+import net.minecraft.server.v1_8_R3.PathfinderGoalLookAtPlayer;
+import net.minecraft.server.v1_8_R3.PathfinderGoalMeleeAttack;
+import net.minecraft.server.v1_8_R3.PathfinderGoalNearestAttackableTarget;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
+import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
+import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
+import net.minecraft.server.v1_8_R3.World;
+
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+
 import com.kiro.projchaos.customs.goals.SummonMobGoal;
 import com.kiro.projchaos.customs.meleeattacks.HelperBotStrike;
 import com.kiro.projchaos.methods.NMSUtils;
-import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-
-import java.util.List;
 
 public class HelperBot extends EntitySkeleton
 {
@@ -42,7 +57,6 @@ public class HelperBot extends EntitySkeleton
 			goalSelector.a(0, new PathfinderGoalFloat(this));
 			goalSelector.a(2, new PathfinderGoalMeleeAttack(this, EntityHuman.class, 1.0D, true));
 			goalSelector.a(2, new PathfinderGoalMeleeAttack(this, EntityWolf.class, 1.0D, true));
-			goalSelector.a(2, new PathfinderGoalMeleeAttack(this, EntityOcelot.class, 1.0D, true));
 			goalSelector.a(3, new SummonMobGoal(this));
 			goalSelector.a(4, new PathfinderGoalRandomStroll(this, 3.0D));
 			goalSelector.a(5, new PathfinderGoalLookAtPlayer(this, EntityHuman.class, 8.0F));
@@ -59,6 +73,7 @@ public class HelperBot extends EntitySkeleton
 			setCustomName(HelperBotStrike.HELPERBOT_NAME);
 			setCustomNameVisible(true);
 			getAttributeInstance(GenericAttributes.c).setValue(0.3D);
+			
 			//		this.setEquipment(0, NMSItems.sword());
 			//		this.setEquipment(4, NMSItems.helm());
 			//		this.setEquipment(3, NMSItems.chest());

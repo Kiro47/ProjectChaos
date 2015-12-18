@@ -1,7 +1,6 @@
 package com.kiro.projchaos.methods;
 
 import java.lang.reflect.InvocationTargetException;
-import com.kiro.projchaos.methods.Modifier;
 
 import net.minecraft.server.v1_8_R3.Block;
 import net.minecraft.server.v1_8_R3.BlockPosition;

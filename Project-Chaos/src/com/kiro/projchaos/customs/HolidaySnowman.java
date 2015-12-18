@@ -2,11 +2,6 @@ package com.kiro.projchaos.customs;
 
 import java.util.List;
 
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-
-import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
-import com.kiro.projchaos.methods.NMSUtils;
-
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.EntitySnowman;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
@@ -17,6 +12,11 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
 import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R3.World;
+
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+
+import com.kiro.projchaos.customs.projectilelistener.DemoManBlastball;
+import com.kiro.projchaos.methods.NMSUtils;
 
 
 public class HolidaySnowman extends EntitySnowman{

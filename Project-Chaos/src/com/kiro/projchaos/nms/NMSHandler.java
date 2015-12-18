@@ -7,7 +7,6 @@ import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityArrow;
 
 import com.kiro.projchaos.EntityTypes;
-import com.kiro.projchaos.nms._Arrow;
 import com.kiro.projchaos.methods.Modifier;
 
 

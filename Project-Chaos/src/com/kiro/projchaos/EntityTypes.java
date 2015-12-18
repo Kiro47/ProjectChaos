@@ -1,15 +1,23 @@
 package com.kiro.projchaos;
 
-import com.kiro.projchaos.customs.*;
-import com.kiro.projchaos.methods.NMSUtils;
-import com.kiro.projchaos.nms._Skeleton;
-import com.kiro.projchaos.nms._Zombie;
+import java.util.Map;
+
 import net.minecraft.server.v1_8_R3.Entity;
+
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
-import java.util.Map;
+import com.kiro.projchaos.customs.CustomSnowman;
+import com.kiro.projchaos.customs.DemoMan;
+import com.kiro.projchaos.customs.HelperBot;
+import com.kiro.projchaos.customs.HolidaySnowman;
+import com.kiro.projchaos.customs.HydraSnowman;
+import com.kiro.projchaos.customs.WitherCat;
+import com.kiro.projchaos.customs.WolfPuck;
+import com.kiro.projchaos.methods.NMSUtils;
+import com.kiro.projchaos.nms._Skeleton;
+import com.kiro.projchaos.nms._Zombie;
 
 public enum EntityTypes
 {

@@ -2,11 +2,6 @@ package com.kiro.projchaos.customs;
 
 import java.util.List;
 
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-
-import com.kiro.projchaos.customs.meleeattacks.WolfPuckMelee;
-import com.kiro.projchaos.methods.NMSUtils;
-
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityWolf;
 import net.minecraft.server.v1_8_R3.EnumColor;
@@ -16,6 +11,11 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalHurtByTarget;
 import net.minecraft.server.v1_8_R3.PathfinderGoalLookAtPlayer;
 import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R3.World;
+
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+
+import com.kiro.projchaos.customs.meleeattacks.WolfPuckMelee;
+import com.kiro.projchaos.methods.NMSUtils;
 
 public class WolfPuck extends EntityWolf	{
 	

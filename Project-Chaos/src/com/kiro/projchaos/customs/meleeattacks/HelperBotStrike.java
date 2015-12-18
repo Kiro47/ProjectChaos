@@ -26,11 +26,13 @@ import com.kiro.projchaos.EntityTypes;
 import com.kiro.projchaos.NMSItems;
 import com.kiro.projchaos.customs.WitherCat;
 import com.kiro.projchaos.methods.RngRangeGen;
+import com.kiro.projchaos.nms.ParticleUtils;
+import com.kiro.projchaos.nms.ParticleUtils.ParticleType;
 
 
 public class HelperBotStrike implements Listener{
 
-	public static String HELPERBOT_NAME = (ChatColor.LIGHT_PURPLE + "HelperBot-Beta 0.2");
+	public static String HELPERBOT_NAME = (ChatColor.LIGHT_PURPLE + "HelperBot-Beta 0.3");
 
 	@EventHandler
 	public void onHelperbotDamageRecieve(EntityDamageByEntityEvent e) {
@@ -40,6 +42,7 @@ public class HelperBotStrike implements Listener{
 		
 		if (!(e.getDamager() instanceof Projectile) ) return;
 		if (!(s.getSkeletonType().equals(SkeletonType.WITHER))) return;
+		if (s.getCustomName() == null) return;
 		if (!(s.getCustomName().equals(HELPERBOT_NAME))) return;
 		if (e.isCancelled()) return;
 		else {
@@ -74,6 +77,7 @@ public class HelperBotStrike implements Listener{
 		if (!(e.getEntity() instanceof Skeleton)) return;
 		Skeleton sk = (Skeleton) e.getEntity();
 		if (!(sk.getSkeletonType().equals(SkeletonType.WITHER))) return;
+		if (sk.getCustomName() == null) return;
 		if (!(sk.getCustomName().equals(HELPERBOT_NAME))) return;
 		else {
 			sk.getEquipment().setItemInHand(NMSItems.sword());
@@ -90,9 +94,36 @@ public class HelperBotStrike implements Listener{
 		if (!(e.getEntity() instanceof Skeleton)) return;
 		Skeleton sk = (Skeleton) e.getEntity();
 		if (!(sk.getSkeletonType().equals(SkeletonType.WITHER))) return;
+		if (sk.getCustomName() == null) return;
 		if (!(sk.getCustomName().equals(HELPERBOT_NAME))) return;
 		
 		else {
+				if (sk.getHealth() > 1) {
+					if (sk.getHealth() > 750) return;
+					if (sk.getHealth() <  755) {
+								if (sk.getHealth() > 740) {
+										ParticleUtils.playEffect(ParticleType.EXPLODE, e.getEntity().getLocation(), 5, 2);
+										sk.getLocation().getWorld().createExplosion(sk.getLocation().getX(), sk.getLocation().getY(), sk.getLocation().getZ(), 4.0F, false, false);
+									}
+					if (sk.getHealth() < 510) {
+								if (sk.getHealth() > 490) {
+									ParticleUtils.playEffect(ParticleType.EXPLODE, e.getEntity().getLocation(), 5, 2);
+									sk.getLocation().getWorld().createExplosion(sk.getLocation().getX(), sk.getLocation().getY(), sk.getLocation().getZ(), 6.0F, false, false);
+								}
+								}
+					if (sk.getHealth() < 260) {
+							if (sk.getHealth() > 245) {
+								ParticleUtils.playEffect(ParticleType.EXPLODE, e.getEntity().getLocation(), 5, 2);
+								sk.getLocation().getWorld().createExplosion(sk.getLocation().getX(), sk.getLocation().getY(), sk.getLocation().getZ(), 8.0F, false, false);
+							}
+					}
+					if (sk.getHealth() < 20) {
+						ParticleUtils.playEffect(ParticleType.EXPLODE, e.getEntity().getLocation(), 5, 2);
+						sk.getLocation().getWorld().createExplosion(sk.getLocation().getX(), sk.getLocation().getY(), sk.getLocation().getZ(), 10.0F, false, false);
+					}
+					}
+				}
+			
 			int in = RngRangeGen.randInt(0, 100);
 			if (in > 25){
 			EntityTypes.spawnEntity(new WitherCat(((CraftWorld) e.getDamager().getWorld()), true), e.getDamager().getLocation().add(3.0D, 1.0D, 3.0D));

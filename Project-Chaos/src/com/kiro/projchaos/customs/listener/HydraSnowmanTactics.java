@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
-import org.bukkit.event.entity.EntityDamageEvent.DamageModifier;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.potion.PotionEffect;
@@ -32,18 +31,20 @@ public class HydraSnowmanTactics implements Listener{
 		Snowman sn = (Snowman) e.getEntity();
 		if (!(sn.getCustomName().equals(HS_SNOWMAN_NAME))) return;
 		else {
-			Location loc = sn.getLocation();
-			if (sn.getLastDamageCause().equals(DamageCause.FIRE) 
-					|| sn.getLastDamageCause().equals(DamageCause.MAGIC) 
-					|| sn.getLastDamageCause().equals(DamageCause.FIRE_TICK)) {
-				return;
-			}
-			else {
+			
+			Location loc = e.getEntity().getLastDamageCause().getEntity().getLocation();
+				if (sn.getLastDamageCause().getCause().equals(DamageCause.FIRE)) {
+					return;
+				}
+				if	 (sn.getLastDamageCause().getCause().equals(DamageCause.MAGIC)){
+					return;
+				}
+				if	 (sn.getLastDamageCause().getCause().equals(DamageCause.FIRE_TICK)) return;
 				snowballPuff(loc);
-				EntityTypes.spawnEntity(new HydraSnowman((CraftWorld)loc.getWorld(), true), loc.add(1.0, 0.0, -1.0));
-				EntityTypes.spawnEntity(new HydraSnowman((CraftWorld)loc.getWorld(), true), loc.add(-1.0, 0.0, 1.0));
+				EntityTypes.spawnEntity(new HydraSnowman((CraftWorld)loc.getWorld(), true), new Location(loc.getWorld(), loc.getX() + 1, 46.0, loc.getZ() - 1));
+				EntityTypes.spawnEntity(new HydraSnowman((CraftWorld)loc.getWorld(), true), new Location(loc.getWorld(), loc.getX() - 1, 46.0, loc.getZ() + 1));
 				return;
-			}
+		
 		}
 	}
 	@EventHandler
@@ -66,9 +67,10 @@ public class HydraSnowmanTactics implements Listener{
 	public void onHydSBHit(EntityDamageByEntityEvent e) {
 		if (!(e.getDamager() instanceof Snowball)) return;
 		Snowball sb = (Snowball) e.getDamager();	
+		if (sb.getCustomName() == null) return;
 		if (!(sb.getCustomName().equals(HS_SNOWMAN_SNOWBALL))) return;
 		else {
-			e.setDamage(DamageModifier.BASE, 7.0D);
+			e.setDamage(7.0D);
 				if (e.getEntity() instanceof Player) {
 					Player pl = (Player) e.getEntity();
 					pl.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 8*20, 1, true, true));
@@ -78,23 +80,23 @@ public class HydraSnowmanTactics implements Listener{
 	}
 	
 	private void snowballPuff(Location loc){
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc, 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(1.0, 0.0, -1.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(-3, 2.0, 0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(2.0, 1.0, -1.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(2.0, 3.0, 2.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(0.0, 3.0, 0.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(-1.0, 3.0, -2.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(-2.0, 2.0, 1.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(1.0, 1.0, 2.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(3.0, 2.0, -3.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(1.0, 2.0, 1.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(1.0, 1.0, 0.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(0.0, 2.0, 3.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(1.0, 2.0, -1.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(2.0, 1.0, -1.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(-1.0, 2.0, 3.0), 1, 5);
-		ParticleUtils.playEffect(ParticleType.SNOWBALL_POOF, loc.add(-1.0, 2.0, -3.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc, 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(1.0, 0.0, -1.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(-3, 2.0, 0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(2.0, 1.0, -1.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(2.0, 3.0, 2.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(0.0, 3.0, 0.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(-1.0, 3.0, -2.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(-2.0, 2.0, 1.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(1.0, 1.0, 2.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(3.0, 2.0, -3.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(1.0, 2.0, 1.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(1.0, 1.0, 0.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(0.0, 2.0, 3.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(1.0, 2.0, -1.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(2.0, 1.0, -1.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(-1.0, 2.0, 3.0), 1, 5);
+		ParticleUtils.playEffect(ParticleType.MAGIC_CRIT, loc.add(-1.0, 2.0, -3.0), 1, 5);
 		return;
 	}
 }

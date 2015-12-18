@@ -2,11 +2,6 @@ package com.kiro.projchaos.customs;
 
 import java.util.List;
 
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-
-import com.kiro.projchaos.customs.listener.HydraSnowmanTactics;
-import com.kiro.projchaos.methods.NMSUtils;
-
 import net.minecraft.server.v1_8_R3.EntityOcelot;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.EntitySnowman;
@@ -21,6 +16,11 @@ import net.minecraft.server.v1_8_R3.PathfinderGoalRandomLookaround;
 import net.minecraft.server.v1_8_R3.PathfinderGoalRandomStroll;
 import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
 import net.minecraft.server.v1_8_R3.World;
+
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+
+import com.kiro.projchaos.customs.listener.HydraSnowmanTactics;
+import com.kiro.projchaos.methods.NMSUtils;
 
 public class HydraSnowman extends EntitySnowman{
 
@@ -70,24 +70,14 @@ public class HydraSnowman extends EntitySnowman{
 			targetSelector.a(2, new PathfinderGoalNearestAttackableTarget(this, EntityPlayer.class, true));
 			targetSelector.a(3, new PathfinderGoalNearestAttackableTarget(this, EntityWolf.class, true));
 					
-			initAttributes();
-			getLoot();
-		}
-	}
-
-	@Override
-	protected void initAttributes()
-	{
-		super.initAttributes();
-		if (isCustom)
-		{
-			getAttributeInstance(GenericAttributes.maxHealth).setValue(100.0D);
+			getAttributeInstance(GenericAttributes.maxHealth).setValue(30.0D);
 			setHealth(this.getMaxHealth());
 			setCustomName(HydraSnowmanTactics.HS_SNOWMAN_NAME);
 			setCustomNameVisible(true);
 			getAttributeInstance(GenericAttributes.c).setValue(0.3D);
 		}
 	}
+
 
 	@Override
 	protected Item getLoot()

@@ -1,9 +1,9 @@
 package com.kiro.projchaos.methods.mods;
 
-import com.kiro.projchaos.nms._Arrow;
-
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityLiving;
+
+import com.kiro.projchaos.nms._Arrow;
 
 public class SniperLauncher implements ModProjectileLaunch, ProjectileLauncher
 {

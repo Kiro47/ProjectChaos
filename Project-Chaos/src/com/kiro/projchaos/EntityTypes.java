@@ -22,7 +22,8 @@ public enum EntityTypes
 	HelperBot("Skeleton", 51, HelperBot.class),
 	BasicZombie("Zombie", 54, _Zombie.class),
 	WolfPuck("Wolf", 95 , WolfPuck.class),
-	HolidaySnowman("Snowman", 97, HolidaySnowman.class);
+	HolidaySnowman("Snowman", 97, HolidaySnowman.class),
+	HydraSnowman("Snowman", 97, HydraSnowman.class);
 
 	EntityTypes(String name, int id, Class<? extends Entity> custom)
 	{
